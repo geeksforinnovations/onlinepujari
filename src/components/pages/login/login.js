@@ -17,18 +17,25 @@ import {
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
-import Home from './src/components/pages/home/home';
-import AppRoot from './src/index';
 
-const App = () => {
+const Login = () => {
   return (
-    <AppRoot></AppRoot>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>          
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Login Page</Text>             
+            </View>            
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };
 
@@ -71,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Login;

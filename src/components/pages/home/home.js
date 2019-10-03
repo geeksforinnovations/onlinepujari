@@ -1,35 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
-  Text,
-  StatusBar,
+  Text
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Home from './src/components/pages/home/home';
-import AppRoot from './src/index';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const App = () => {
+const Home = () => {
   return (
-    <AppRoot></AppRoot>
-  );
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Hello Home Page</Text>              
+            </View>            
+          </View>
+          );
 };
 
 const styles = StyleSheet.create({
@@ -71,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Home;
