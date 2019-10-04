@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+    flex:1,
+    alignItems: "center"
   },
   sectionContainer: {
     marginTop: 32,

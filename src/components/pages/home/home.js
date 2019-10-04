@@ -1,29 +1,58 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text
-} from 'react-native';
+import {StyleSheet, View, Text, SectionList, FlatList} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-const Home = () => {
+import {SafeAreaView} from 'react-navigation';
+const availablePujas = [
+  {name: 'puja1', description: 'puja description'},
+  {name: 'puja2', description: 'puja description'},
+];
+const Puja = ({puja}) => {
   return (
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Hello Home Page</Text>              
-            </View>            
-          </View>
-          );
+    <View style={styles.sectionContainer}>
+      <Text style={styles.sectionTitle}>{puja.name}</Text>
+    </View>
+  );
 };
 
+class Home extends React.Component {
+  static navigationOptions = {
+    title: 'Home1',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
+
+  render() {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.body}>
+          <View style={styles.sectionContainer}>
+            <Text style={styles.sectionTitle}>Hello Home Page</Text>
+          </View>
+          <FlatList
+            data={availablePujas}
+            renderItem={({item}) => {
+              return <Puja puja={item} />;
+            }}
+            keyExtractor={item => item.name}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  container: {
+    flex: 1,
+    marginTop: 51,
+    marginHorizontal: 16,
+    alignItems:"center"
   },
   body: {
     backgroundColor: Colors.white,
@@ -33,26 +62,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
-    fontSize: 24,
+    fontSize: 14,
     fontWeight: '600',
     color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
   },
 });
 
