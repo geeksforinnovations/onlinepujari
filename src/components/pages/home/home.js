@@ -1,19 +1,14 @@
 import React from 'react';
 import {StyleSheet, View, Text, SectionList, FlatList} from 'react-native';
+import Puja from '../../common/pujaCard/PujaCard'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {SafeAreaView} from 'react-navigation';
 const availablePujas = [
   {name: 'puja1', description: 'puja description'},
-  {name: 'puja2', description: 'puja description'},
+  {name: 'pujsdadd2', description: 'puja description'},
 ];
-const Puja = ({puja}) => {
-  return (
-    <View style={styles.sectionContainer}>
-      <Text style={styles.sectionTitle}>{puja.name}</Text>
-    </View>
-  );
-};
+
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -35,6 +30,7 @@ class Home extends React.Component {
             <Text style={styles.sectionTitle}>Hello Home Page</Text>
           </View>
           <FlatList
+          style={styles.list}
             data={availablePujas}
             renderItem={({item}) => {
               return <Puja puja={item} />;
@@ -48,17 +44,20 @@ class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  list: {
+   // flex:1
+   backgroundColor: 'yellow',
+   marginLeft:3,
+   marginRight:3
+  },
   container: {
     flex: 1,
-    marginTop: 51,
-    marginHorizontal: 16,
-    alignItems:"center"
   },
   body: {
     backgroundColor: Colors.white,
   },
   sectionContainer: {
-    marginTop: 32,
+    alignItems:'center',
     paddingHorizontal: 24,
   },
   sectionTitle: {
