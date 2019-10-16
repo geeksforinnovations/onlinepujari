@@ -4,6 +4,7 @@ import Puja from '../../common/pujaCard/PujaCard'
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {SafeAreaView} from 'react-navigation';
+import PujaDetailsCard from '../../common/pudaDetailsCard/PujaDetailsCard';
 const availablePujas = [
   {name: 'puja1', description: 'puja description'},
   {name: 'pujsdadd2', description: 'puja description'},
@@ -33,7 +34,7 @@ class Home extends React.Component {
           style={styles.list}
             data={availablePujas}
             renderItem={({item}) => {
-              return <Puja puja={item} />;
+              return <PujaDetailsCard puja={item} />;
             }}
             keyExtractor={item => item.name}
           />
