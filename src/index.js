@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-// import { createStore, applyMiddleware, combineReducers } from "redux";
+ import { createStore, applyMiddleware, combineReducers } from "redux";
 import {Provider} from 'react-redux';
-// import thunk from "redux-thunk";
-// import logger from "redux-logger";
+ import thunk from "redux-thunk";
+import logger from "redux-logger";
 
-// import * as reducers from "./reducers/index";
+import * as reducers from "./reducers/index";
 import Home from './components/pages/home/home';
 import Login from './components/pages/login/login';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import PujaDetailsCard from './components/common/pudaDetailsCard/PujaDetailsCard';
 
-// const AppNavigator = createStackNavigator({
-//   Home: Home,
-// });
+
 
 const RootStack = createStackNavigator({
   Home: {
@@ -20,6 +19,9 @@ const RootStack = createStackNavigator({
   },
   Login: {
     screen: Login
+  },
+  PujaDetails:{
+    screen: PujaDetailsCard
   }
 },
 {
@@ -27,18 +29,18 @@ const RootStack = createStackNavigator({
 });
 const AppContainer = createAppContainer(RootStack);
 
-// const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
-// const reducer = combineReducers(reducers);
-// const store = createStoreWithMiddleware(reducer);
+ const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
+ const reducer = combineReducers(reducers);
+ const store = createStoreWithMiddleware(reducer);
 
-// class AppRoot extends Component {
-//   render() {
-//     return (
-//       <Provider store={store}>
-//         <Home></Home>
-//       </Provider>
-//     );
-//   }
-// }
+class AppRoot extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer></AppContainer>
+      </Provider>
+    );
+  }
+}
 
-export default AppContainer;
+export default AppRoot;

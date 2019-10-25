@@ -21,7 +21,8 @@ const Puja = ({puja, onClick}) => {
       activeOpacity={0.5}
       style={{flex: 1}}
       onPress={() => {
-        alert(puja.name);
+        //alert(1)
+        onClick()
       }}>
       <View style={styles.sectionContainer}>
         <View style={styles.imageContainer}>

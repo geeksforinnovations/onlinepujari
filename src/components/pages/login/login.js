@@ -20,7 +20,8 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 
-const Login = () => {
+const Login = (props) => {
+  
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -30,7 +31,8 @@ const Login = () => {
           style={styles.scrollView}>          
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Login Page</Text>             
+              <Text style={styles.sectionTitle}>Login Page qw {JSON.stringify(props)} </Text>       
+              <Text>{props.navigation.getParam('name', 'default value')}</Text>      
             </View>            
           </View>
         </ScrollView>

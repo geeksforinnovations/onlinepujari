@@ -7,36 +7,37 @@ import {SafeAreaView} from 'react-navigation';
 import PujaDetailsCard from '../../common/pudaDetailsCard/PujaDetailsCard';
 import {Block, Text} from '../../core';
 const availablePujas = [
-  {name: 'puja1', price:'2400', description: 'puja description', requiredTime:'5'},
-  {name: 'pujsdadd2',price:'2400', description: 'puja description', requiredTime:'15'},
+  {id:1,name: 'puja1', price:'2400', description: 'puja description', requiredTime:'5'},
+  {id:2,name: 'pujsdadd2',price:'2400', description: 'puja description', requiredTime:'15'},
 ];
 
 class Home extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Home1',
-  //   headerStyle: {
-  //     backgroundColor: '#f4511e',
-  //   },
-  //   headerTintColor: '#fff',
-  //   headerTitleStyle: {
-  //     fontWeight: 'bold',
-  //   },
-  // };
+  static navigationOptions = {
+    title: 'Online Sastry',
+    //headerStyle: {
+    //  backgroundColor: '#f4511e',
+    //},
+    // headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <SafeAreaView style={styles.container}>
         <Block>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text h4>Available Pujas</Text>
+              <Text h4>Available  Pujas</Text>
             </View>
 
             <FlatList
               style={styles.list}
               data={availablePujas}
               renderItem={({item}) => {
-                return <Puja puja={item} />;
+                return <Puja puja={item} onClick={() => navigate('PujaDetails', { id: item.id })} />;
               }}
               keyExtractor={item => item.name}
             />

@@ -4,7 +4,8 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Button, Block} from '../../core';
 // import {Button} from 'galio-framework';
 
-const PujaDetailsCard = ({puja}) => {
+const PujaDetailsCard = ({puja, navigation}) => {
+  const id = navigation.getParam('id',null)
   const imgUrl =
     'https://mygate.s3.amazonaws.com/mgmedia/society/4214/notices/32e90f48bae9c60b340265537636d1dfdcc13b1f/4b502be7e7645937c95d3d6232506975.jpg';
 
@@ -16,7 +17,7 @@ const PujaDetailsCard = ({puja}) => {
       <View style={styles.container}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={img} />
-          <Text >Anna Prasanna</Text>
+          <Text >Anna Prasanna {id}</Text>
           
         </View>
         <View style={styles.actionsContainer}>
