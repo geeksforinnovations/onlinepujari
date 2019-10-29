@@ -1,3 +1,4 @@
+import React from 'react';
 import {Input} from 'galio-framework';
 
 const  G4I_Input = props => {

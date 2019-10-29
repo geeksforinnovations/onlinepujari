@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -32,7 +33,10 @@ const Login = (props) => {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Login Page qw {JSON.stringify(props)} </Text>       
-              <Text>{props.navigation.getParam('name', 'default value')}</Text>      
+              <TouchableOpacity onPress={()=>props.navigation.openDrawer()}>
+
+              <Text>{props.navigation.getParam('name', 'default value')}</Text>  
+              </TouchableOpacity>    
             </View>            
           </View>
         </ScrollView>
