@@ -4,26 +4,27 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Block } from '../../core';
 import { Button } from 'galio-framework'
 import DescriptionCard from './DescriptionCard';
+import { SafeAreaView, StackActions } from 'react-navigation';
+import { DrawerActions , useNavigation} from 'react-navigation-drawer'
 // import {Button} from 'galio-framework';
 class PujaDetailsCard extends React.Component {
-  static navigationOptions = {
-    title: 'Home',
-    header: (navigation, header) => {
-      let right = <Button>Bla</Button>;
-      return { ...header, right };
-    },
-    drawer: () => ({
-      label: 'Main',
-    }),
-  };
-  constructor(props) {
-    super(props)
+  onclickd() {
+    const pushAction = StackActions.push({
+      routeName: 'Checkout'
+    });
+    this.props.navigation.navigate(pushAction)
   }
 
+  componentDidUpdate() {
+   // this.props.navigation.setParams({ title: ' 12222' })
+  }
+  c() {
+    this.props.navigation.dispatch(DrawerActions.toggleDrawer())
+  }
   render() {
     const { puja, navigation } = this.props;
-    const imgUrl =
-      'https://mygate.s3.amazonaws.com/mgmedia/society/4214/notices/32e90f48bae9c60b340265537636d1dfdcc13b1f/4b502be7e7645937c95d3d6232506975.jpg';
+    const imgUrl = 'https://picsum.photos/200'
+    // 'https://mygate.s3.amazonaws.com/mgmedia/society/4214/notices/32e90f48bae9c60b340265537636d1dfdcc13b1f/4b502be7e7645937c95d3d6232506975.jpg';
 
     const img = {
       uri: imgUrl
@@ -48,7 +49,7 @@ class PujaDetailsCard extends React.Component {
                 radius={10}
                 width={10}
                 style={{ width: 150, backgroundColor: '#2699FB' }}
-                onPress={() => navigation.navigate('Checkout')} >book</Button>
+                onPress={() => this.onclickd()} >book</Button>
 
             </View>
           </View>
@@ -78,7 +79,7 @@ class PujaDetailsCard extends React.Component {
             activeOpacity={.5}
             loading={false}
             style={{ alignSelf: 'stretch', width: '100%', borderRadius: 0, backgroundColor: '#2699FB' }}
-            onPress={() => navigation.openDrawer()} >book</Button>
+            onPress={() => this.c()} >book</Button>
         </View>
       </Block>
     );

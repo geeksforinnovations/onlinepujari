@@ -14,7 +14,7 @@ import {Price} from '../../core';
 const Puja = ({puja, onClick}) => {
   const img = {
     uri:
-      'https://mygate.s3.amazonaws.com/mgmedia/society/4214/notices/32e90f48bae9c60b340265537636d1dfdcc13b1f/4b502be7e7645937c95d3d6232506975.jpg',
+      'https://picsum.photos/200',
   };
   return (
     <TouchableOpacity

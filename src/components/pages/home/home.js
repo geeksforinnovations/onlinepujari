@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 import Puja from '../../common/pujaCard/PujaCard';
-
+// import { createAppContainer , StackActions} from 'react-navigation';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView , StackActions} from 'react-navigation';
 import { Block, Input } from '../../core';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 const availablePujas = [
@@ -13,11 +13,26 @@ const availablePujas = [
 
 class Home extends React.Component {
   static navigationOptions = {
-    title: 'home'
+    title: 'home',
+    headerStyle: {
+      backgroundColor: 'red',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   };
+  onClickd(){
+    const pushAction = StackActions.push({
+      routeName: 'PujaDetails'
+    });
+    //this.props.navigation.openDrawer()
+    this.props.navigation.navigate(pushAction)
+  }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, dispatch } = this.props.navigation;
+    
     return (
       <SafeAreaView style={styles.container}>
         <Block>
@@ -33,7 +48,7 @@ class Home extends React.Component {
               style={styles.list}
               data={availablePujas}
               renderItem={({ item }) => {
-                return <Puja puja={item} onClick={() => navigate('PujaDetails', { id: item.id })} />;
+                return <Puja puja={item} onClick={() => this.onClickd()} />;
               }}
               keyExtractor={item => item.name}
             />

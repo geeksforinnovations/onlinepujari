@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-
+import { TouchableOpacity, Image } from 'react-native'
 import * as reducers from "./reducers/index";
 import Home from './components/pages/home/home';
 import Login from './components/pages/login/login';
@@ -19,27 +19,30 @@ import DrawerContent from './components/common/DrawerContent';
 const RootStack = createDrawerNavigator({
   Home: {
     screen: Home,
-    navigationOptions: {
-      drawerLabel: 'Home'
-    }
+    navigationOptions: ({ navigation }) => ({
+      title: `Home`,
+    }),
   },
   Login: {
     screen: Login,
-    navigationOptions: {
-      drawerLabel: 'Login'
-    }
+    navigationOptions: ({ navigation }) => ({
+      title: `Login`,
+    }),
+
   },
   PujaDetails: {
     screen: PujaDetailsCard,
-    navigationOptions: {
-      drawerLabel: 'Puja Details'
-    }
+    navigationOptions: ({ navigation }) => ({
+      title: `Puja details`,
+    }),
+
   },
   Checkout: {
     screen: CheckoutPage,
-    navigationOptions: {
-      drawerLabel: 'Checkout'
-    }
+    navigationOptions: ({ navigation }) => ({
+      title: `Checkout`,
+    }),
+
   }
 },
   {
@@ -53,41 +56,52 @@ const RootStack = createDrawerNavigator({
   });
 const AppNavigator = createStackNavigator(
   {
-    Drawer: { screen: RootStack },
-
     Login: { screen: Login },
-    Home: { screen: Home },
+    Home: {
+      screen: Home,
+      navigationOptions: ({ navigation }) => ({
+        title: `hone's Profile'`,
+        headerLeft: <TouchableOpacity onPress={() => navigation.goBack()}><Image source={{ uri: 'https://picsum.photos/200' }} style={{ marginTop: 10, marginLeft: 10 }} /></TouchableOpacity>,
+
+      }),
+
+    },
     PujaDetails: {
       screen: PujaDetailsCard,
       path: 'puja/:id',
-      
+      navigationOptions: ({ navigation }) => ({
+        title: `masdsddsdni's Profile'`,
+      }),
+
     },
     Checkout: {
       screen: CheckoutPage,
-      path: 'checkout/:pujaId'
-    }
+      path: 'checkout/:pujaId',
+      navigationOptions: ({ navigation }) => ({
+        title: `qw's Profile'`,
+      }),
+    },
+    Drawer: {
+      screen: RootStack,
+      // navigationOptions: ({ navigation }) => ({
+      //   title: `mani's Profile'`,
+      // }),
+    },
   }, {
-  initialRouteName: "Drawer",
-  //headerMode: 'none',
-  // mode: 'modal',
-  // defaultNavigationOptions: {
-  //   title:'hrlo',
-  //   gesturesEnabled: true,
-  //   headerMode: 'screen',
-  //   headerLayoutPreset:'center',
-  //   headerBackTitleVisible: true,
-  //   headerStyle: {
-  //     //backgroundColor: 'transparent',
-  //     backgroundColor: '#28F1A6',
-  //     elevation: 0,
-  //     shadowOpacity: 0
-  //   },
-  //   headerTintColor: '#333333',
-  //   headerTitleStyle: {
-  //     fontWeight: 'bold',
-  //     color: 'black'
-  //   }
-  // }
+  initialRouteName: "Home",
+  defaultNavigationOptions: {
+    // title:'sd',
+    headerStyle: {
+      backgroundColor: '#28F1A6',
+      elevation: 0,
+      shadowOpacity: 0
+    },
+    headerTintColor: '#333333',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      color: '#ffffff'
+    }
+  }
 });
 const AppContainer = createAppContainer(AppNavigator);
 
@@ -101,6 +115,7 @@ class AppRoot extends Component {
       <Provider store={store}>
         <AppContainer></AppContainer>
       </Provider>
+
     );
   }
 }
