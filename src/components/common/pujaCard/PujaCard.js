@@ -30,9 +30,9 @@ const Puja = ({puja, onClick}) => {
         </View>
         <View style={styles.detailsConatiner}>
           <Text style={styles.pujaName}>{puja.name}</Text>
-          <Price style={styles.priceText} amount={puja.price}></Price>
+          <Price style={styles.priceText} amount={puja.cost}></Price>
           <Text style={styles.timeText}>
-            Total aTime : {puja.requiredTime}Hrs
+            Total Time : {puja.timeInHrs} hrs 
           </Text>
         </View>
       </View>
@@ -44,29 +44,30 @@ const styles = StyleSheet.create({
   sectionContainer: {
     flex: 1,
     flexDirection: 'row',
-    borderColor: 'green',
-    borderWidth: 1,
+    backgroundColor: Colors.white,
+   // borderColor: 'green',
+   // borderWidth: 1,
     marginVertical: 5,
     height: 80,
   },
   imageContainer: {
-    borderColor: 'black',
-    borderWidth: 1,
+    //borderColor: 'black',
+   // borderWidth: 1,
     width: 80,
   },
   detailsConatiner: {
-    borderColor: 'red',
-    borderWidth: 1,
+   // borderColor: 'red',
+   // borderWidth: 1,
     flex: 1,
     paddingHorizontal: 6,
   },
   sectionTitle: {
     fontSize: 14,
     fontWeight: '600',
-    color: Colors.black,
+    color: '#2699FB',
   },
   pujaName: {
-    color: 'red',
+    color: '#2699FB',
     fontWeight: 'bold',
     fontSize: 16,
     marginVertical: 1,
@@ -74,10 +75,12 @@ const styles = StyleSheet.create({
   priceText: {
     fontSize: 16,
     marginVertical: 1,
+    color: '#2699FB',
   },
   timeText: {
     fontSize: 13,
     marginVertical: 1,
+    color: '#2699FB',
   },
 });
 

@@ -16,6 +16,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import AppContainer from './src/index';
+import stripe from 'tipsi-stripe'
+stripe.setOptions({
+  publishableKey: 'pk_test_znz4sfwsislBf9ccezlHagFt',
+  // merchantId: 'MERCHANT_ID', // Optional
+  androidPayMode: 'test', // Android only
+})
 
 
 

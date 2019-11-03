@@ -13,6 +13,8 @@ import PujaDetailsCard from './components/common/pudaDetailsCard/PujaDetailsCard
 import CheckoutPage from './components/pages/checkout.page';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import DrawerContent from './components/common/DrawerContent';
+import CardDetailss from './components/pages/payment/cardDetails.page';
+import SuccessPage from './components/pages/payment/paymentSuccess.page';
 
 
 
@@ -56,13 +58,18 @@ const RootStack = createDrawerNavigator({
   });
 const AppNavigator = createStackNavigator(
   {
-    Login: { screen: Login },
+
     Home: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-        title: `hone's Profile'`,
-        headerLeft: <TouchableOpacity onPress={() => navigation.goBack()}><Image source={{ uri: 'https://picsum.photos/200' }} style={{ marginTop: 10, marginLeft: 10 }} /></TouchableOpacity>,
-
+        title: `Pujas`,
+        headerStyle: {
+          backgroundColor: 'transparent',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: '#2699FB',
+          },
+        },
       }),
 
     },
@@ -70,7 +77,7 @@ const AppNavigator = createStackNavigator(
       screen: PujaDetailsCard,
       path: 'puja/:id',
       navigationOptions: ({ navigation }) => ({
-        title: `masdsddsdni's Profile'`,
+        title: `Puja Details`,
       }),
 
     },
@@ -78,28 +85,40 @@ const AppNavigator = createStackNavigator(
       screen: CheckoutPage,
       path: 'checkout/:pujaId',
       navigationOptions: ({ navigation }) => ({
-        title: `qw's Profile'`,
+        title: `Booking Details`,
       }),
     },
-    Drawer: {
-      screen: RootStack,
-      // navigationOptions: ({ navigation }) => ({
-      //   title: `mani's Profile'`,
-      // }),
+    CardDetails: {
+      screen: CardDetailss,
+      navigationOptions: ({ navigation }) => ({
+        title: `Payment`,
+      }),
     },
+    SuccessPage:{
+      screen: SuccessPage,
+      navigationOptions: ({ navigation }) => ({
+        title: `Success`,
+        headerLeft: null
+      }),
+    }
+    // Drawer: {
+    //   screen: RootStack,
+    //   // navigationOptions: ({ navigation }) => ({
+    //   //   title: `mani's Profile'`,
+    //   // }),
+    // },
   }, {
   initialRouteName: "Home",
   defaultNavigationOptions: {
-    // title:'sd',
     headerStyle: {
-      backgroundColor: '#28F1A6',
+      //backgroundColor: '#28F1A6',
       elevation: 0,
       shadowOpacity: 0
     },
-    headerTintColor: '#333333',
+    headerTintColor: '#2699FB',
     headerTitleStyle: {
       fontWeight: 'bold',
-      color: '#ffffff'
+      color: '#2699FB',
     }
   }
 });
