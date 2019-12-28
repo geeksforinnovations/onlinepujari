@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { TouchableOpacity, Image } from 'react-native'
+import { theme, withGalio, GalioProvider } from 'galio-framework'
 import * as reducers from "./reducers/index";
 import Home from './components/pages/home/home';
 import Login from './components/pages/login/login';
@@ -94,7 +95,7 @@ const AppNavigator = createStackNavigator(
         title: `Payment`,
       }),
     },
-    SuccessPage:{
+    SuccessPage: {
       screen: SuccessPage,
       navigationOptions: ({ navigation }) => ({
         title: `Success`,
@@ -128,11 +129,16 @@ const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
+import Ctheme from './theme/theme'
 class AppRoot extends Component {
   render() {
     return (
+
+
       <Provider store={store}>
-        <AppContainer></AppContainer>
+        <GalioProvider theme={Ctheme}>
+          <AppContainer></AppContainer>
+        </GalioProvider>
       </Provider>
 
     );

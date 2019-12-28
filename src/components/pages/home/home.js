@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, ScrollView } from 'react-native';
 import Puja from '../../common/pujaCard/PujaCard';
 // import { createAppContainer , StackActions} from 'react-navigation';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -30,29 +30,34 @@ class Home extends React.Component {
 
   }
 
+
   render() {
     const { navigate, dispatch } = this.props.navigation;
 
     return (
       <SafeAreaView style={styles.container}>
         <Block>
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Input type="default" style={{ borderColor: '#2699FB' }} placeholder={'Search'} right
-                icon="search1" family="antdesign" iconSize={25}
-                onChangeText={(text) => { console.log(text) }}
-                iconColor="#2699FB" ></Input>
-            </View>
+          <ScrollView>
+            <View style={styles.body}>
+              <View style={styles.sectionContainer}>
+                <Input type="default" style={{ borderColor: '#2699FB' }} placeholder={'Search'} right
+                  icon="search1" family="antdesign" iconSize={25}
+                  onChangeText={(text) => { console.log(text) }}
+                  iconColor="#2699FB" ></Input>
+              </View>
 
-            <FlatList
-              style={styles.list}
-              data={this.props.availablePujas}
-              renderItem={({ item }) => {
-                return <Puja puja={item} onClick={() => this.onClickd(item)} />;
-              }}
-              keyExtractor={item => item.name}
-            />
-          </View>
+
+              <FlatList
+                style={styles.list}
+                data={this.props.availablePujas}
+                renderItem={({ item }) => {
+                  return <Puja puja={item} onClick={() => this.onClickd(item)} />;
+                }}
+                keyExtractor={item => item.name}
+              />
+
+            </View>
+          </ScrollView>
         </Block>
       </SafeAreaView>
     );

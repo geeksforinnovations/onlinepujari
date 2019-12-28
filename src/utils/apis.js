@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 //PUJAS
-export const baseUrl = 'https://e93ownwzgl.execute-api.us-east-1.amazonaws.com/dev'
+export const baseUrl = 'https://czla69q7ql.execute-api.us-east-1.amazonaws.com/dev'
 export const getAllPujas = async (filter = {}) => {
     const result =await axios.get(`${baseUrl}/pujas`)
     return result.data.data 
